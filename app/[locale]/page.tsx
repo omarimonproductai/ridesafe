@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useI18n } from '@/lib/i18n/I18nProvider';
 import { CTALink } from '@/components/CTAButton';
+import { Icon, type IconName } from '@/components/Icon';
 
-const SLIDES = [
-  { key: 'landing.rotate.learn', icon: '📚' },
-  { key: 'landing.rotate.quiz', icon: '❓' },
-  { key: 'landing.rotate.rewards', icon: '🎁' },
+const SLIDES: { key: string; icon: IconName }[] = [
+  { key: 'landing.rotate.learn', icon: 'learn' },
+  { key: 'landing.rotate.quiz', icon: 'quiz' },
+  { key: 'landing.rotate.rewards', icon: 'rewards' },
 ];
 
 export default function LandingPage() {
@@ -24,7 +25,7 @@ export default function LandingPage() {
       <div className="content">
         <div className="hero-rotator" style={{ marginTop: 24 }}>
           <div className="hero-illustration" aria-hidden>
-            {SLIDES[index].icon}
+            <Icon name={SLIDES[index].icon} size={120} />
           </div>
           <h1>{t(SLIDES[index].key)}</h1>
           <div className="dots">
@@ -39,7 +40,6 @@ export default function LandingPage() {
       </div>
       <div className="button-zone">
         <CTALink href={`/${locale}/settings`}>{t('landing.cta')}</CTALink>
-        <div className="footer">{t('footer.createdBy')}</div>
       </div>
     </>
   );

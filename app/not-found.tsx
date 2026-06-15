@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { defaultLocale } from '@/lib/i18n/config';
+import { Icon } from '@/components/Icon';
+import { BrandFooter } from '@/components/BrandFooter';
 
 export default function NotFound() {
   return (
@@ -8,7 +10,7 @@ export default function NotFound() {
         <div className="content">
           <div className="center-col">
             <div className="hero-illustration" aria-hidden>
-              🔍
+              <Icon name="search" size={120} />
             </div>
             <h2>Oops!</h2>
             <p className="muted">This page could not be found.</p>
@@ -19,6 +21,7 @@ export default function NotFound() {
             Back to start
           </Link>
         </div>
+        <BrandFooter />
       </div>
     </div>
   );

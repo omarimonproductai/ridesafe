@@ -1,14 +1,38 @@
+/*
+ * CooltraGilroy brand font. The font files are not redistributed here — drop the
+ * .woff2 files into /public/fonts (see public/fonts/README.md). Until then the
+ * UI falls back to Arial, as specified by the brand guidelines.
+ */
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
 :root {
-  --cooltra-green: #00c46a;
-  --cooltra-green-dark: #00a85a;
+  --cooltra-blue: #008aff;
+  --dark-blue: #052f62;
+  --deep-blue: #063063;
+  --accent-green: #05e100;
+  --white: #feffff;
+  --light-blue: #8ec8ff;
+  --orange: #ec6e24;
   --ink: #0a0a0a;
-  --cream: #faf4ec;
-  --white: #ffffff;
-  --grey-badge: #e8e4e5;
-  --grey-text: #6b6b6b;
-  --correct: #1fa85a;
-  --incorrect: #e5484d;
   --max-content-width: 800px;
+  --font-brand: 'CooltraGilroy', Arial, sans-serif;
 }
 
 * {
@@ -22,22 +46,20 @@ body {
 }
 
 body {
-  font-family: var(--font-sora), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-brand);
   color: var(--ink);
-  background: var(--ink);
+  background: var(--deep-blue);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Outer wrapper: city-photo backdrop behind the content card. */
+/* Outer wrapper: solid Cooltra blue canvas behind the white content card. */
 .app-bg {
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: stretch;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)),
-    var(--cooltra-green-dark);
+  background: linear-gradient(180deg, var(--cooltra-blue) 0%, var(--dark-blue) 100%);
   background-size: cover;
   background-position: center;
 }
@@ -45,7 +67,7 @@ body {
 .shell {
   width: 100%;
   max-width: var(--max-content-width);
-  background: var(--cream);
+  background: var(--white);
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -74,24 +96,27 @@ body {
   gap: 12px;
 }
 
-/* Typography */
+/* Typography: blue titles on white, dark body. */
 h1 {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.15;
   margin: 0;
+  color: var(--cooltra-blue);
 }
 
 h2 {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 800;
   margin: 0;
+  color: var(--cooltra-blue);
 }
 
 p {
   font-size: 16px;
   line-height: 1.5;
   margin: 0;
+  color: var(--ink);
 }
 
 ul.lesson-list {
@@ -102,15 +127,16 @@ ul.lesson-list {
   gap: 8px;
   font-size: 16px;
   line-height: 1.5;
+  color: var(--ink);
 }
 
-/* CTA button (pill) */
+/* CTA button (pill) — primary is Cooltra blue, never green. */
 .cta {
   width: 100%;
   height: 64px;
   border-radius: 100px;
   border: none;
-  background: var(--cooltra-green);
+  background: var(--cooltra-blue);
   color: var(--white);
   font-family: inherit;
   font-size: 18px;
@@ -124,23 +150,23 @@ ul.lesson-list {
 }
 
 .cta:hover {
-  background: var(--cooltra-green-dark);
+  background: var(--dark-blue);
 }
 
 .cta:disabled {
-  background: var(--grey-badge);
-  color: var(--grey-text);
+  background: var(--light-blue);
+  color: var(--white);
   cursor: not-allowed;
 }
 
 .cta--secondary {
   background: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink);
+  color: var(--cooltra-blue);
+  border: 2px solid var(--cooltra-blue);
 }
 
 .cta--secondary:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 138, 255, 0.08);
 }
 
 /* Top bar */
@@ -156,24 +182,26 @@ ul.lesson-list {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
   padding: 8px;
-  color: var(--ink);
+  color: var(--cooltra-blue);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .progress-badge {
-  background: var(--grey-badge);
+  background: var(--light-blue);
+  color: var(--dark-blue);
   border-radius: 100px;
   padding: 6px 14px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Cards */
 .card {
   background: var(--white);
+  border: 1px solid var(--light-blue);
   border-radius: 16px;
   padding: 16px;
 }
@@ -184,7 +212,7 @@ ul.lesson-list {
   display: block;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  background: var(--grey-badge);
+  background: var(--light-blue);
 }
 
 /* Module list */
@@ -193,7 +221,7 @@ ul.lesson-list {
   align-items: center;
   gap: 12px;
   background: var(--white);
-  border: none;
+  border: 1px solid var(--light-blue);
   border-radius: 16px;
   padding: 16px;
   width: 100%;
@@ -211,48 +239,51 @@ ul.lesson-list {
 .module-card__title {
   font-size: 16px;
   font-weight: 600;
+  color: var(--dark-blue);
 }
 
 .module-card__subtitle {
   font-size: 14px;
-  color: var(--grey-text);
+  color: var(--dark-blue);
+  opacity: 0.7;
   margin-top: 2px;
 }
 
 .status-dot {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
   flex-shrink: 0;
 }
 
+/* Completed uses the green accent (icon, not text). */
 .status-dot--completed {
-  background: var(--correct);
-  color: var(--white);
+  background: var(--accent-green);
+  color: var(--dark-blue);
 }
 
 .status-dot--in-progress {
-  background: var(--cooltra-green);
+  background: var(--cooltra-blue);
   color: var(--white);
 }
 
 .status-dot--not-started {
-  background: var(--grey-badge);
-  color: var(--grey-text);
+  background: var(--light-blue);
+  color: var(--dark-blue);
 }
 
 .chevron {
-  color: var(--grey-text);
-  font-size: 20px;
+  color: var(--cooltra-blue);
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Course group card */
+/* Course group card — dark blue panel with white text. */
 .course-card {
-  background: var(--white);
+  background: var(--dark-blue);
   border-radius: 16px;
   padding: 20px;
   display: flex;
@@ -260,10 +291,25 @@ ul.lesson-list {
   gap: 8px;
 }
 
+.course-card h2,
+.course-card p {
+  color: var(--white);
+}
+
+.course-card .progress-badge {
+  background: var(--cooltra-blue);
+  color: var(--white);
+}
+
+/* Reward badge: dark panel, white text, green accent icon. */
 .reward-badge {
   align-self: flex-start;
-  background: var(--cooltra-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-blue);
   color: var(--white);
+  border: 1px solid var(--accent-green);
   border-radius: 100px;
   padding: 6px 14px;
   font-size: 14px;
@@ -275,7 +321,7 @@ ul.lesson-list {
   width: 100%;
   text-align: left;
   background: var(--white);
-  border: 2px solid var(--grey-badge);
+  border: 2px solid var(--light-blue);
   border-radius: 16px;
   padding: 16px;
   font-family: inherit;
@@ -285,17 +331,18 @@ ul.lesson-list {
 }
 
 .answer--selected {
-  border-color: var(--ink);
+  border-color: var(--cooltra-blue);
 }
 
+/* Correct = green accent highlight (border/bg). Label text stays dark, never green. */
 .answer--correct {
-  border-color: var(--correct);
-  background: rgba(31, 168, 90, 0.1);
+  border-color: var(--accent-green);
+  background: rgba(5, 225, 0, 0.1);
 }
 
 .answer--incorrect {
-  border-color: var(--incorrect);
-  background: rgba(229, 72, 77, 0.1);
+  border-color: var(--orange);
+  background: rgba(236, 110, 36, 0.1);
 }
 
 .answer:disabled {
@@ -311,23 +358,24 @@ ul.lesson-list {
 }
 
 .feedback--correct {
-  background: rgba(31, 168, 90, 0.12);
+  background: rgba(5, 225, 0, 0.12);
 }
 
 .feedback--incorrect {
-  background: rgba(229, 72, 77, 0.12);
+  background: rgba(236, 110, 36, 0.12);
 }
 
 .feedback__label {
-  font-weight: 700;
+  font-weight: 800;
 }
 
+/* "Correct" label is dark blue (green is never used for text). */
 .feedback__label--correct {
-  color: var(--correct);
+  color: var(--dark-blue);
 }
 
 .feedback__label--incorrect {
-  color: var(--incorrect);
+  color: var(--orange);
 }
 
 /* Forms */
@@ -340,16 +388,18 @@ ul.lesson-list {
 .field label {
   font-size: 14px;
   font-weight: 600;
+  color: var(--dark-blue);
 }
 
 .field select {
   height: 52px;
   border-radius: 12px;
-  border: 2px solid var(--grey-badge);
+  border: 2px solid var(--light-blue);
   padding: 0 12px;
   font-size: 16px;
   font-family: inherit;
   background: var(--white);
+  color: var(--ink);
 }
 
 /* Landing hero rotation */
@@ -367,7 +417,6 @@ ul.lesson-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 72px;
 }
 
 .dots {
@@ -380,22 +429,16 @@ ul.lesson-list {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--grey-badge);
+  background: var(--light-blue);
 }
 
 .dot--active {
-  background: var(--cooltra-green);
+  background: var(--cooltra-blue);
 }
 
 .muted {
-  color: var(--grey-text);
-}
-
-.footer {
-  text-align: center;
-  font-size: 14px;
-  color: var(--grey-text);
-  padding-top: 12px;
+  color: var(--dark-blue);
+  opacity: 0.8;
 }
 
 .center-col {
@@ -406,4 +449,27 @@ ul.lesson-list {
   align-items: center;
   text-align: center;
   gap: 16px;
+}
+
+/* Constant brand footer: "TIME TO RIDE" left, Cooltra wordmark right. */
+.brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 2px solid var(--accent-green);
+}
+
+.brand-footer__tagline {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--dark-blue);
+}
+
+.brand-footer__logo {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--cooltra-blue);
 }
