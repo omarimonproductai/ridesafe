@@ -1,0 +1,475 @@
+/*
+ * CooltraGilroy brand font. The font files are not redistributed here — drop the
+ * .woff2 files into /public/fonts (see public/fonts/README.md). Until then the
+ * UI falls back to Arial, as specified by the brand guidelines.
+ */
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CooltraGilroy';
+  src: url('/fonts/CooltraGilroy-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+:root {
+  --cooltra-blue: #008aff;
+  --dark-blue: #052f62;
+  --deep-blue: #063063;
+  --accent-green: #05e100;
+  --white: #feffff;
+  --light-blue: #8ec8ff;
+  --orange: #ec6e24;
+  --ink: #0a0a0a;
+  --max-content-width: 800px;
+  --font-brand: 'CooltraGilroy', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-brand);
+  color: var(--ink);
+  background: var(--deep-blue);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Outer wrapper: solid Cooltra blue canvas behind the white content card. */
+.app-bg {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: linear-gradient(180deg, var(--cooltra-blue) 0%, var(--dark-blue) 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max-content-width);
+  background: var(--white);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+@media (min-width: 600px) {
+  .shell {
+    padding: 24px 80px;
+  }
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button-zone {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Typography: blue titles on white, dark body. */
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--cooltra-blue);
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--cooltra-blue);
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--ink);
+}
+
+ul.lesson-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* CTA button (pill) — primary is Cooltra blue, never green. */
+.cta {
+  width: 100%;
+  height: 64px;
+  border-radius: 100px;
+  border: none;
+  background: var(--cooltra-blue);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.cta:hover {
+  background: var(--dark-blue);
+}
+
+.cta:disabled {
+  background: var(--light-blue);
+  color: var(--white);
+  cursor: not-allowed;
+}
+
+.cta--secondary {
+  background: transparent;
+  color: var(--cooltra-blue);
+  border: 2px solid var(--cooltra-blue);
+}
+
+.cta--secondary:hover {
+  background: rgba(0, 138, 255, 0.08);
+}
+
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.topbar__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--cooltra-blue);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.progress-badge {
+  background: var(--light-blue);
+  color: var(--dark-blue);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border: 1px solid var(--light-blue);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.hero-img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--light-blue);
+}
+
+/* Module list */
+.module-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--light-blue);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: inherit;
+}
+
+.module-card__body {
+  flex: 1;
+}
+
+.module-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.module-card__subtitle {
+  font-size: 14px;
+  color: var(--dark-blue);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.status-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Completed uses the green accent (icon, not text). */
+.status-dot--completed {
+  background: var(--accent-green);
+  color: var(--dark-blue);
+}
+
+.status-dot--in-progress {
+  background: var(--cooltra-blue);
+  color: var(--white);
+}
+
+.status-dot--not-started {
+  background: var(--light-blue);
+  color: var(--dark-blue);
+}
+
+.chevron {
+  color: var(--cooltra-blue);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Course group card — dark blue panel with white text. */
+.course-card {
+  background: var(--dark-blue);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-card h2,
+.course-card p {
+  color: var(--white);
+}
+
+.course-card .progress-badge {
+  background: var(--cooltra-blue);
+  color: var(--white);
+}
+
+/* Reward badge: dark panel, white text, green accent icon. */
+.reward-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-blue);
+  color: var(--white);
+  border: 1px solid var(--accent-green);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Quiz */
+.answer {
+  width: 100%;
+  text-align: left;
+  background: var(--white);
+  border: 2px solid var(--light-blue);
+  border-radius: 16px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.answer--selected {
+  border-color: var(--cooltra-blue);
+}
+
+/* Correct = green accent highlight (border/bg). Label text stays dark, never green. */
+.answer--correct {
+  border-color: var(--accent-green);
+  background: rgba(5, 225, 0, 0.1);
+}
+
+.answer--incorrect {
+  border-color: var(--orange);
+  background: rgba(236, 110, 36, 0.1);
+}
+
+.answer:disabled {
+  cursor: default;
+}
+
+.feedback {
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feedback--correct {
+  background: rgba(5, 225, 0, 0.12);
+}
+
+.feedback--incorrect {
+  background: rgba(236, 110, 36, 0.12);
+}
+
+.feedback__label {
+  font-weight: 800;
+}
+
+/* "Correct" label is dark blue (green is never used for text). */
+.feedback__label--correct {
+  color: var(--dark-blue);
+}
+
+.feedback__label--incorrect {
+  color: var(--orange);
+}
+
+/* Forms */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.field select {
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--light-blue);
+  padding: 0 12px;
+  font-size: 16px;
+  font-family: inherit;
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* Landing hero rotation */
+.hero-rotator {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-illustration {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--light-blue);
+}
+
+.dot--active {
+  background: var(--cooltra-blue);
+}
+
+.muted {
+  color: var(--dark-blue);
+  opacity: 0.8;
+}
+
+.center-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+/* Constant brand footer: "TIME TO RIDE" left, Cooltra wordmark right. */
+.brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 2px solid var(--accent-green);
+}
+
+.brand-footer__tagline {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--dark-blue);
+}
+
+.brand-footer__logo {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--cooltra-blue);
+}
