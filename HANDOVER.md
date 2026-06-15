@@ -25,8 +25,9 @@ Branch: `claude/gallant-bardeen-mr3ui1`.
 1. **Brand assets** — exact Cooltra hex colours (currently best-guess green in
    `styles/globals.css`), official logo, licensed fonts, real SVG icons/illustrations
    (currently emoji placeholders), city background photos.
-2. **Content translation** — lesson/quiz content exists in EN + ES only; IT/NL/FR/CA/PT
-   fall back to EN. Needs translation + legal validation of country traffic rules.
+2. **Content translation** — lesson/quiz/country content is now provided in all 7
+   languages (EN/ES/IT/NL/FR/CA/PT). Still needs a native-speaker + legal review of the
+   country-specific traffic rules.
 3. **Country ↔ language mapping** — confirm the exact list of Cooltra markets and the
    default language per country.
 4. **Lighthouse audit** — not run in this environment (needs a browser).
