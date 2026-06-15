@@ -19,6 +19,16 @@ Branch: `claude/gallant-bardeen-mr3ui1`.
 - Session progress via `localStorage` (module status + global "X of 4").
 - Visual-only reward badge (no Cooltra app integration).
 - UI strings translated to all 7 languages.
+- Cooltra brand applied (blue primary, green accent only, CooltraGilroy + Arial,
+  in-house SVG icons, constant "TIME TO RIDE" footer).
+- **Static export for GitHub Pages** (`output: 'export'`) + deploy workflow.
+
+## Deploying to GitHub Pages
+
+1. Repo **Settings → Pages → Source → GitHub Actions** (one-time).
+2. Push to `main` → `.github/workflows/deploy-pages.yml` builds and deploys.
+3. Live at `https://omarimonproductai.github.io/ridesafe/`.
+   Custom domain: remove `NEXT_PUBLIC_BASE_PATH` from the workflow and add a `CNAME`.
 
 ## Pending / follow-ups (see PRD §10 Open Questions and tasks file)
 

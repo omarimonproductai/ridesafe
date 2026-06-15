@@ -46,6 +46,18 @@ Modules: `ebike-basics`, `riding-safely`, `traffic-rules` (localised by country)
 - `messages/` — UI strings per locale
 - `styles/` — theme tokens and global CSS
 
+## Deployment (GitHub Pages)
+
+The app is a **static export** (`output: 'export'` → `out/`). It deploys automatically
+via `.github/workflows/deploy-pages.yml` on every push to `main`.
+
+One-time setup: in the repo **Settings → Pages → Build and deployment → Source**, select
+**GitHub Actions**. The site will be published at `https://omarimonproductai.github.io/ridesafe/`.
+
+- The workflow builds with `NEXT_PUBLIC_BASE_PATH=/ridesafe` (project Pages live under `/<repo>/`).
+- For a **custom domain**, remove that env var (base path becomes empty) and add a `CNAME`.
+- `public/.nojekyll` stops Pages from ignoring the `_next/` folder.
+
 ## Notes
 
 - **Brand colours** live as CSS variables in `styles/globals.css` / `styles/theme.ts`.
